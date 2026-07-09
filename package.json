@@ -5,13 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "build": "node scripts/clean-dist.mjs && astro build",
+    "preview": "astro preview",
+    "sync:gallery": "node scripts/sync-gallery.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "latest",
     "astro": "latest",
     "tailwindcss": "latest",
     "typescript": "latest"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.3"
   }
 }
