@@ -16,8 +16,8 @@ export const siteMeta = {
   rating: "4.7",
   reviewCount: "5,935",
   type: "海滩亭",
-  heroImage: "/gallery/praia-bela-pitimbu-1.jpg",
-  ogImage: "/gallery/praia-bela-pitimbu-1.jpg",
+  heroImage: "https://praiabelapitimbu.com/gallery/praia-bela-pitimbu-4.jpg",
+  ogImage: "/gallery/praia-bela-pitimbu-4.jpg",
   galleryImages: Array.from({ length: 24 }, (_, index) => ({
     src: `/gallery/praia-bela-pitimbu-${index + 1}.jpg`,
     index: index + 1,
@@ -435,31 +435,31 @@ export const contentByLocale: Record<Locale, PageContent> = {
           title: "巴西国家地理与统计局（IBGE）— 皮廷布市数据面板",
           href: "https://cidades.ibge.gov.br/brasil/pb/pitimbu/panorama",
           description:
-            "IBGE 是巴西最权威的官方地理与统计机构。该页面提供皮廷布市的精确领土面积、人口统计、经纬度、气候与地形等纯学术数据，是科普条目最严谨的数据背书。",
+            "IBGE 为巴西官方地理与统计机构，该页面提供皮廷布市的领土、人口与地理指标等可核验数据，可用于条目中的行政与统计引用。",
         },
         {
           title: "帕拉伊巴州环境管理监督局（SUDEMA）",
           href: "https://sudema.pb.gov.br/",
           description:
-            "负责帕拉伊巴州的环境保护与生态监测，定期发布沿海海滩水质监测（Balneabilidade）与红树林、海岸线生态保护政策，可丰富海洋生态与环境保护内容。",
+            "SUDEMA 为帕拉伊巴州环境管理机构，公开发布沿海水质监测（balneabilidade）与生态保护相关信息，可作为环境监测与政策引用。",
         },
         {
           title: "帕拉伊巴州水资源管理执行局（AESA）",
           href: "https://www.aesa.pb.gov.br/",
           description:
-            "负责本地区水文与气象监测，提供海岸线最新气候数据、潮汐规律与降雨量统计，是了解 Praia Bela 气候与自然规律的权威数据源。",
+            "AESA 负责帕拉伊巴州水文与气象监测，提供降雨、气候与水文观测数据，可用于讨论潮汐与季节性海岸条件。",
         },
         {
           title: "帕拉伊巴联邦大学（UFPB）",
           href: "https://www.ufpb.br/",
           description:
-            "帕拉伊巴州顶尖公立学术机构，其地理系与海洋生物学系长期对南部海岸线地貌演变、海岸侵蚀与海洋生物多样性进行研究，适合作为高阶科普的外部延伸。",
+            "UFPB 为帕拉伊巴州公立大学，其地理与海洋生物相关研究可作为海岸地貌与生物多样性背景的学术延伸入口。",
         },
         {
           title: "皮廷布市政府官方网站（Prefeitura Municipal de Pitimbu）",
           href: "https://www.pitimbu.pb.gov.br/",
           description:
-            "最基础的属地行政官网，不含商业推广，提供行政区划历史、公共设施建设与地方文化遗产等公共信息，为景点的行政归属提供官方确认。",
+            "皮廷布市政府官网提供行政区划与公共信息，可用于确认景点的属地归属与基础公共服务背景。",
         },
       ],
     },
@@ -768,31 +768,31 @@ export const contentByLocale: Record<Locale, PageContent> = {
           title: "IBGE — Pitimbu municipal panel",
           href: "https://cidades.ibge.gov.br/brasil/pb/pitimbu/panorama",
           description:
-            "IBGE is Brazil's most authoritative official geography and statistics agency. This page provides rigorous academic data on Pitimbu's area, population, coordinates, climate, and terrain—a solid data backbone for science communication.",
+            "IBGE is Brazil's official geography and statistics agency; this page provides verifiable municipal data for Pitimbu (area, population, coordinates, and related indicators) suitable for factual citations.",
         },
         {
           title: "SUDEMA — Paraíba environmental agency",
           href: "https://sudema.pb.gov.br/",
           description:
-            "Responsible for environmental protection and ecological monitoring in Paraíba, it regularly publishes coastal water-quality monitoring (Balneabilidade) and policies on mangroves and coastline protection, enriching marine-ecology content.",
+            "SUDEMA is Paraíba's environmental agency and publishes public information on coastal water quality (balneabilidade) and environmental protection, useful for policy and monitoring references.",
         },
         {
           title: "AESA — Paraíba water resources agency",
           href: "https://www.aesa.pb.gov.br/",
           description:
-            "Handles regional hydrology and meteorology, providing the latest coastal climate data, tidal patterns, and rainfall statistics—an authoritative source for Praia Bela's climate and natural rhythms.",
+            "AESA provides regional hydrology and meteorology data for Paraíba, offering climate and rainfall observations that support discussions of seasonal coastal conditions.",
         },
         {
           title: "Federal University of Paraíba (UFPB)",
           href: "https://www.ufpb.br/",
           description:
-            "The state's leading public university; its geography and marine-biology departments study the southern coastline's geomorphology, coastal erosion, and marine biodiversity—useful for advanced science outreach.",
+            "UFPB is a public research university in Paraíba whose geography and marine science work can serve as an academic entry point for coastal geomorphology and biodiversity context.",
         },
         {
           title: "Municipal Government of Pitimbu",
           href: "https://www.pitimbu.pb.gov.br/",
           description:
-            "The basic local administrative site, with no commercial promotion, offering public information on administrative history, public works, and cultural heritage—official confirmation of the site's administrative belonging.",
+            "The municipal government site provides basic administrative information for Pitimbu and can be used to confirm the locality and administrative context of Praia Bela.",
         },
       ],
     },
@@ -1101,31 +1101,31 @@ export const contentByLocale: Record<Locale, PageContent> = {
           title: "IBGE — pannello del comune di Pitimbu",
           href: "https://cidades.ibge.gov.br/brasil/pb/pitimbu/panorama",
           description:
-            "L'IBGE è l'agenzia ufficiale più autorevole del Brasile per geografia e statistica. Questa pagina offre dati accademici rigorosi su superficie, popolazione, coordinate, clima e rilievo di Pitimbu: una solida base per la divulgazione.",
+            "L'IBGE è l'ente ufficiale brasiliano per geografia e statistica e questa pagina fornisce dati verificabili del comune di Pitimbu utili per citazioni fattuali.",
         },
         {
           title: "SUDEMA — agenzia ambientale della Paraíba",
           href: "https://sudema.pb.gov.br/",
           description:
-            "Responsabile della protezione ambientale e del monitoraggio ecologico in Paraíba, pubblica regolarmente il monitoraggio della balneabilità e le politiche su mangrovie e costa, arricchendo i contenuti di ecologia marina.",
+            "SUDEMA è l'agenzia ambientale della Paraíba e pubblica informazioni su qualità delle acque costiere (balneabilità) e tutela ambientale, utili come riferimenti di monitoraggio e policy.",
         },
         {
           title: "AESA — agenzia delle risorse idriche della Paraíba",
           href: "https://www.aesa.pb.gov.br/",
           description:
-            "Gestisce idrologia e meteorologia regionali, fornendo dati costieri su clima, maree e piogge: fonte autorevole per il clima e i ritmi naturali di Praia Bela.",
+            "AESA fornisce dati regionali di idrologia e meteorologia per la Paraíba, incluse osservazioni climatiche e pluviometriche utili per il contesto stagionale.",
         },
         {
           title: "Università Federale della Paraíba (UFPB)",
           href: "https://www.ufpb.br/",
           description:
-            "La principale università pubblica dello stato; i dipartimenti di geografia e biologia marina studiano l'evoluzione costiera, l'erosione e la biodiversità marina: utile per la divulgazione avanzata.",
+            "L'UFPB è un'università pubblica di ricerca i cui studi in geografia e scienze marine possono offrire un'estensione accademica su geomorfologia costiera e biodiversità.",
         },
         {
           title: "Comune di Pitimbu",
           href: "https://www.pitimbu.pb.gov.br/",
           description:
-            "Il sito amministrativo locale di base, senza promozione commerciale, con informazioni su storia amministrativa, opere pubbliche e patrimonio culturale: conferma ufficiale dell'appartenenza del sito.",
+            "Il sito del Comune di Pitimbu fornisce informazioni amministrative di base e può essere usato per confermare contesto e appartenenza territoriale.",
         },
       ],
     },
@@ -1434,31 +1434,31 @@ export const contentByLocale: Record<Locale, PageContent> = {
           title: "IBGE — panel del municipio de Pitimbu",
           href: "https://cidades.ibge.gov.br/brasil/pb/pitimbu/panorama",
           description:
-            "El IBGE es el organismo oficial más autorizado del Brasil en geografía y estadística. Esta página ofrece datos académicos rigurosos sobre superficie, población, coordenadas, clima y relieve de Pitimbu: una base sólida para la divulgación.",
+            "El IBGE es el organismo oficial de geografía y estadística de Brasil y esta página reúne datos verificables del municipio de Pitimbu para citas factuales.",
         },
         {
           title: "SUDEMA — agencia ambiental de Paraíba",
           href: "https://sudema.pb.gov.br/",
           description:
-            "Responsable de la protección ambiental y el monitoreo ecológico en Paraíba, publica regularmente el monitoreo de balneabilidad y políticas sobre manglares y costa, enriqueciendo los contenidos de ecología marina.",
+            "SUDEMA es la agencia ambiental de Paraíba y publica información pública sobre calidad del agua costera (balneabilidad) y protección ambiental, útil como referencia de monitoreo y política.",
         },
         {
           title: "AESA — agencia de recursos hídricos de Paraíba",
           href: "https://www.aesa.pb.gov.br/",
           description:
-            "Gestiona hidrología y meteorología regionales, y ofrece datos costeros de clima, mareas y lluvias: fuente autorizada para el clima y los ritmos naturales de Praia Bela.",
+            "AESA ofrece datos regionales de hidrología y meteorología en Paraíba, con observaciones climáticas y de lluvia útiles para contextualizar condiciones estacionales.",
         },
         {
           title: "Universidad Federal de Paraíba (UFPB)",
           href: "https://www.ufpb.br/",
           description:
-            "La principal universidad pública del estado; sus departamentos de geografía y biología marina estudian la evolución costera, la erosión y la biodiversidad marina: útil para la divulgación avanzada.",
+            "La UFPB es una universidad pública de investigación y sus áreas de geografía y ciencias marinas pueden servir como puerta de entrada académica a geomorfología costera y biodiversidad.",
         },
         {
           title: "Ayuntamiento de Pitimbu",
           href: "https://www.pitimbu.pb.gov.br/",
           description:
-            "El sitio administrativo local básico, sin promoción comercial, con información sobre historia administrativa, obras públicas y patrimonio cultural: confirmación oficial de la pertenencia del sitio.",
+            "El sitio municipal de Pitimbu reúne información administrativa básica y puede usarse para confirmar el contexto y la pertenencia territorial del lugar.",
         },
       ],
     },
@@ -1767,31 +1767,31 @@ export const contentByLocale: Record<Locale, PageContent> = {
           title: "IBGE — painel do município de Pitimbu",
           href: "https://cidades.ibge.gov.br/brasil/pb/pitimbu/panorama",
           description:
-            "O IBGE é o órgão oficial mais autorizado do Brasil em geografia e estatística. Esta página oferece dados acadêmicos rigorosos sobre área, população, coordenadas, clima e relevo de Pitimbu: uma base sólida para a divulgação.",
+            "O IBGE é o órgão oficial de geografia e estatística do Brasil e esta página reúne dados verificáveis do município de Pitimbu para citações factuais.",
         },
         {
           title: "SUDEMA — agência ambiental da Paraíba",
           href: "https://sudema.pb.gov.br/",
           description:
-            "Responsável pela proteção ambiental e pelo monitoramento ecológico na Paraíba, publica regularmente o monitoramento de balneabilidade e políticas sobre manguezais e litoral, enriquecendo os conteúdos de ecologia marinha.",
+            "A SUDEMA é a agência ambiental da Paraíba e publica informações públicas sobre qualidade da água costeira (balneabilidade) e proteção ambiental, úteis como referência de monitoramento e política.",
         },
         {
           title: "AESA — agência de recursos hídricos da Paraíba",
           href: "https://www.aesa.pb.gov.br/",
           description:
-            "Gerencia hidrologia e meteorologia regionais, e oferece dados costeiros de clima, marés e chuvas: fonte autorizada para o clima e os ritmos naturais da Praia Bela.",
+            "A AESA oferece dados regionais de hidrologia e meteorologia na Paraíba, com observações de clima e chuva úteis para contextualizar condições sazonais.",
         },
         {
           title: "Universidade Federal da Paraíba (UFPB)",
           href: "https://www.ufpb.br/",
           description:
-            "A principal universidade pública do estado; seus departamentos de geografia e biologia marinha estudam a evolução costeira, a erosão e a biodiversidade marinha: útil para a divulgação avançada.",
+            "A UFPB é uma universidade pública de pesquisa e suas áreas de geografia e ciências marinhas podem servir como extensão acadêmica sobre geomorfologia costeira e biodiversidade.",
         },
         {
           title: "Prefeitura de Pitimbu",
           href: "https://www.pitimbu.pb.gov.br/",
           description:
-            "O site administrativo local básico, sem promoção comercial, com informações sobre história administrativa, obras públicas e patrimônio cultural: confirmação oficial da subordinação do local.",
+            "O site da Prefeitura de Pitimbu reúne informações administrativas básicas e pode ser usado para confirmar o contexto e a vinculação territorial do local.",
         },
       ],
     },
