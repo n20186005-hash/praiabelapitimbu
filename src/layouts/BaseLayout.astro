@@ -1,0 +1,80 @@
+---
+import "../styles/global.css";
+import { alternateLinks, localizedPath, siteMeta, type Locale } from "../data/site";
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  alternateUrls?: Array<{ href: string; hreflang: string }>;
+  structuredData?: Record<string, unknown> | null;
+}
+
+const { locale, title, description, canonicalPath: customCanonicalPath, alternateUrls, structuredData } = Astro.props;
+const canonicalPath = customCanonicalPath ?? localizedPath(locale);
+const siteOrigin = Astro.site?.toString().replace(/\/$/, "") ?? `https://${siteMeta.domain}`;
+const canonicalUrl = `${siteOrigin}${canonicalPath}`;
+const tourismSchema = {
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  name: siteMeta.name,
+  description,
+  url: canonicalUrl,
+  image: `${siteOrigin}${siteMeta.ogImage}`,
+  telephone: siteMeta.phone,
+  sameAs: [siteMeta.mapsUrl],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Unnamed Road",
+    addressLocality: "Pitimbu",
+    addressRegion: "Paraíba",
+    addressCountry: "BR",
+    postalCode: "58324-000",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: siteMeta.rating,
+    reviewCount: siteMeta.reviewCount.replace(",", ""),
+  },
+};
+const pageStructuredData = structuredData === undefined ? tourismSchema : structuredData;
+---
+
+<!doctype html>
+<html lang={locale === "zh" ? "zh-CN" : locale === "pt" ? "pt-BR" : locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {
+      (alternateUrls ??
+        alternateLinks.map((item) => ({
+          hreflang: item.locale === "zh" ? "zh-CN" : item.locale === "pt" ? "pt-BR" : item.locale,
+          href: `${siteOrigin}${item.href}`,
+        }))).map((item) => (
+        <link
+          rel="alternate"
+          hreflang={item.hreflang}
+          href={item.href}
+        />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={`${siteOrigin}/`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={`${siteOrigin}${siteMeta.ogImage}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteOrigin}${siteMeta.ogImage}`} />
+    {pageStructuredData && <script type="application/ld+json" set:html={JSON.stringify(pageStructuredData)} />}
+  </head>
+  <body class="antialiased">
+    <slot />
+  </body>
+</html>
