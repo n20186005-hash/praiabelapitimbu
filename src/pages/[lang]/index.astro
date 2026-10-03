@@ -12,6 +12,11 @@ const locale = locales.includes(langParam) && langParam !== "zh" ? langParam : "
 const content = contentByLocale[locale];
 ---
 
-<BaseLayout locale={locale} title={content.title} description={content.description}>
+<BaseLayout
+  locale={locale}
+  title={content.title}
+  description={content.description}
+  faqItems={content.faq.groups.flatMap((group) => group.items)}
+>
   <LandingPage locale={locale} content={content} />
 </BaseLayout>

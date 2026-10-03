@@ -10,6 +10,7 @@
     "sync:gallery": "node scripts/sync-gallery.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "latest",
     "astro": "latest",
     "tailwindcss": "latest",

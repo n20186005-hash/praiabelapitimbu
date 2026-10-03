@@ -9,20 +9,25 @@ interface Props {
   canonicalPath?: string;
   alternateUrls?: Array<{ href: string; hreflang: string }>;
   structuredData?: Record<string, unknown> | null;
+  faqItems?: Array<{ question: string; answer: string }>;
 }
 
-const { locale, title, description, canonicalPath: customCanonicalPath, alternateUrls, structuredData } = Astro.props;
+const { locale, title, description, canonicalPath: customCanonicalPath, alternateUrls, structuredData, faqItems } = Astro.props;
 const canonicalPath = customCanonicalPath ?? localizedPath(locale);
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") ?? `https://${siteMeta.domain}`;
 const canonicalUrl = `${siteOrigin}${canonicalPath}`;
-const tourismSchema = {
+const geoCoordinates = {
+  "@type": "GeoCoordinates",
+  latitude: -7.4667,
+  longitude: -34.8333,
+};
+const touristAttractionSchema = {
   "@context": "https://schema.org",
-  "@type": "TouristAttraction",
+  "@type": ["TouristAttraction", "Place"],
   name: siteMeta.name,
   description,
   url: canonicalUrl,
   image: `${siteOrigin}${siteMeta.ogImage}`,
-  telephone: siteMeta.phone,
   sameAs: [siteMeta.mapsUrl],
   address: {
     "@type": "PostalAddress",
@@ -32,13 +37,50 @@ const tourismSchema = {
     addressCountry: "BR",
     postalCode: "58324-000",
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: siteMeta.rating,
-    reviewCount: siteMeta.reviewCount.replace(",", ""),
+  geo: geoCoordinates,
+  isAccessibleForFree: true,
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "00:00",
+    closes: "23:59",
   },
 };
-const pageStructuredData = structuredData === undefined ? tourismSchema : structuredData;
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteMeta.name,
+  url: `${siteOrigin}/`,
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Brasil" },
+    { "@type": "ListItem", position: 2, name: "Paraíba" },
+    { "@type": "ListItem", position: 3, name: "Pitimbu" },
+    { "@type": "ListItem", position: 4, name: "Praia Bela", item: canonicalUrl },
+  ],
+};
+const faqSchema = faqItems?.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    }
+  : null;
+
+const pageStructuredData =
+  structuredData === undefined
+    ? [touristAttractionSchema, webSiteSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])]
+    : structuredData;
 ---
 
 <!doctype html>

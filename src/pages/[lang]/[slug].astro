@@ -1,76 +1,117 @@
 ---
 import CookieSettingsPanel from "../../components/CookieSettingsPanel.astro";
 import LegalPage from "../../components/LegalPage.astro";
+import TopicPage from "../../components/TopicPage.astro";
 import { legalAlternateUrls, legalContentByLocale, legalKeyBySlug, legalPageKeys, legalSlugByKey, localizedLegalPath, type LegalPageKey } from "../../data/legal";
+import { topicContentByKey, topicKeyBySlug } from "../../data/topics";
 import { locales, type Locale } from "../../data/site";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export function getStaticPaths() {
-  return locales
+  const legalPaths = locales
     .filter((locale) => locale !== "zh")
     .flatMap((locale) => legalPageKeys.map((key) => ({ params: { lang: locale, slug: legalSlugByKey[key] } })));
+  const topicPaths = locales
+    .filter((locale) => locale === "pt")
+    .flatMap(() => Object.keys(topicContentByKey).map((slug) => ({ params: { lang: "pt", slug } })));
+  return [...legalPaths, ...topicPaths];
 }
 
 const langParam = Astro.params.lang as Locale;
 const locale = locales.includes(langParam) && langParam !== "zh" ? langParam : "en";
 const slug = Astro.params.slug ?? "";
-const pageKey = legalKeyBySlug[slug];
-
-if (!pageKey) {
-  throw new Error(`Unknown legal page slug: ${slug}`);
-}
-
-const legal = legalContentByLocale[locale];
-const page = legal[pageKey] as (typeof legal)["privacy"];
+const topicKey = topicKeyBySlug[slug];
 const siteOrigin = Astro.site?.toString().replace(/\/$/, "") ?? `https://praiabelapitimbu.com`;
-const languageTag: Record<Locale, string> = {
-  zh: "zh-CN",
-  en: "en",
-  it: "it",
-  es: "es",
-  pt: "pt-BR",
-};
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: page.title,
-  description: page.description,
-  url: `${siteOrigin}${localizedLegalPath(locale, pageKey as LegalPageKey)}`,
-  inLanguage: languageTag[locale],
-};
+
+let legalVars: {
+  pageKey: LegalPageKey;
+  title: string;
+  description: string;
+  structuredData: Record<string, unknown>;
+  homeLabel: string;
+  backLabel: string;
+  titleText: string;
+  updatedLabel: string;
+  updatedValue: string;
+  intro: string;
+  sections: unknown;
+  cookies?: unknown;
+} | null = null;
+
+if (!topicKey) {
+  const pageKey = legalKeyBySlug[slug];
+  if (!pageKey) {
+    throw new Error(`Unknown page slug: ${slug}`);
+  }
+  const legal = legalContentByLocale[locale];
+  const page = legal[pageKey] as (typeof legal)["privacy"];
+  const languageTag: Record<Locale, string> = {
+    zh: "zh-CN",
+    en: "en",
+    it: "it",
+    es: "es",
+    pt: "pt-BR",
+  };
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: page.title,
+    description: page.description,
+    url: `${siteOrigin}${localizedLegalPath(locale, pageKey as LegalPageKey)}`,
+    inLanguage: languageTag[locale],
+  };
+  legalVars = {
+    pageKey,
+    title: `${page.title} | Praia Bela - Pitimbu`,
+    description: page.description,
+    structuredData,
+    homeLabel: legal.homeLabel,
+    backLabel: legal.backLabel,
+    titleText: page.title,
+    updatedLabel: legal.updatedLabel,
+    updatedValue: page.updatedValue,
+    intro: page.intro,
+    sections: page.sections,
+    cookies: pageKey === "cookies" ? legal.cookies : undefined,
+  };
+}
 ---
 
-<BaseLayout
-  locale={locale}
-  title={`${page.title} | Praia Bela - Pitimbu`}
-  description={page.description}
-  canonicalPath={localizedLegalPath(locale, pageKey as LegalPageKey)}
-  alternateUrls={legalAlternateUrls(pageKey as LegalPageKey, siteOrigin)}
-  structuredData={structuredData}
->
-  <LegalPage
-    locale={locale}
-    homeLabel={legal.homeLabel}
-    backLabel={legal.backLabel}
-    title={page.title}
-    updatedLabel={page.updatedLabel}
-    updatedValue={page.updatedValue}
-    intro={page.intro}
-    sections={page.sections}
-  >
-    {
-      pageKey === "cookies" && (
-        <CookieSettingsPanel
-          categories={legal.cookies.categories}
-          consentTitle={legal.cookies.consentTitle}
-          consentBody={legal.cookies.consentBody}
-          note={legal.cookies.note}
-          saveLabel={legal.cookies.saveLabel}
-          rejectLabel={legal.cookies.rejectLabel}
-          savedMessage={legal.cookies.savedMessage}
-          rejectedMessage={legal.cookies.rejectedMessage}
-        />
-      )
-    }
-  </LegalPage>
-</BaseLayout>
+{
+  topicKey ? (
+    <TopicPage locale={locale} slug={slug} topic={topicContentByKey[topicKey]} />
+  ) : (
+    <BaseLayout
+      locale={locale}
+      title={legalVars!.title}
+      description={legalVars!.description}
+      canonicalPath={localizedLegalPath(locale, legalVars!.pageKey)}
+      alternateUrls={legalAlternateUrls(legalVars!.pageKey, siteOrigin)}
+      structuredData={legalVars!.structuredData}
+    >
+      <LegalPage
+        locale={locale}
+        homeLabel={legalVars!.homeLabel}
+        backLabel={legalVars!.backLabel}
+        title={legalVars!.titleText}
+        updatedLabel={legalVars!.updatedLabel}
+        updatedValue={legalVars!.updatedValue}
+        intro={legalVars!.intro}
+        sections={legalVars!.sections as any}
+      >
+        {legalVars!.pageKey === "cookies" && (
+          <CookieSettingsPanel
+            categories={(legalVars!.cookies as any).categories}
+            consentTitle={(legalVars!.cookies as any).consentTitle}
+            consentBody={(legalVars!.cookies as any).consentBody}
+            note={(legalVars!.cookies as any).note}
+            saveLabel={(legalVars!.cookies as any).saveLabel}
+            rejectLabel={(legalVars!.cookies as any).rejectLabel}
+            savedMessage={(legalVars!.cookies as any).savedMessage}
+            rejectedMessage={(legalVars!.cookies as any).rejectedMessage}
+          />
+        )}
+      </LegalPage>
+    </BaseLayout>
+  )
+}

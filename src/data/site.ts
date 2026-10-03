@@ -14,7 +14,7 @@ export const siteMeta = {
   plusCodeZh: "J52W+R9 皮廷布，巴西帕拉伊巴州",
   phone: "",
   rating: "4.7",
-  reviewCount: "5,935",
+  reviewCount: "6,062",
   type: "海滩亭",
   heroImage: "https://praiabelapitimbu.com/gallery/praia-bela-pitimbu-4.jpg",
   ogImage: "/gallery/praia-bela-pitimbu-4.jpg",
@@ -96,6 +96,7 @@ export type PageContent = {
     intro: string;
     mapsCta: string;
     altPrefix: string;
+    photoAlts?: string[];
   };
   reviews: {
     title: string;
@@ -1471,22 +1472,22 @@ export const contentByLocale: Record<Locale, PageContent> = {
   },
   pt: {
     localeName: "Português",
-    title: "Praia Bela - Pitimbu | Guia multilíngue na Paraíba, Brasil",
+    title: "Praia Bela em Pitimbu, PB: Onde Fica, Como Chegar e Fotos",
     description:
-      "Guia em cinco idiomas sobre a Praia Bela - Pitimbu, com contexto geográfico, ecologia de rio e mar, transporte, fotos do local e links oficiais.",
+      "Conheça a Praia Bela em Pitimbu, Paraíba. Veja onde fica, como chegar saindo de João Pessoa, fotos, o encontro do rio com o mar e dicas para visitar.",
     nav: {
       overview: "Visão geral",
       gallery: "Fotos",
       reviews: "Avaliações",
-      transport: "Acesso",
+      transport: "Como chegar",
       visit: "Visita",
       links: "Links",
     },
     hero: {
       eyebrow: "Paraíba, Brasil | Uma praia onde o rio e o mar se encontram",
-      headline: "Praia Bela - Pitimbu",
+      headline: "Praia Bela – Pitimbu, Paraíba",
       summary:
-        "Este é um guia de divulgação científica sem fins lucrativos da Praia Bela. Foca na geografia da praia, na ecologia de rio e mar, em como chegar e em fotos do local, sem reservas, promoções ou aval de cunho comercial.",
+        "A Praia Bela fica no município de Pitimbu, no litoral sul da Paraíba, a cerca de 45 km de João Pessoa. É conhecida pelo encontro do Rio Mucatu com o mar. Veja como chegar, fotos do local e dicas para visitar.",
       ratingLabel: "Avaliação do Google",
       typeLabel: "Tipo",
       addressLabel: "Endereço",
@@ -1628,6 +1629,11 @@ export const contentByLocale: Record<Locale, PageContent> = {
               answer:
                 "Os manguezais do estuário são berçário de filhotes de peixes e crustáceos, filtram nutrientes e amortecem as ressacas. Os bancos que a baixa-mar revela alimentam aves e a vida bentônica: uma sala de aula natural de ecologia costeira.",
             },
+            {
+              question: "A Praia Bela fica em João Pessoa?",
+              answer:
+                "Não. A Praia Bela fica no município de Pitimbu, no litoral sul da Paraíba. Porém, é frequentemente visitada em passeios saindo de João Pessoa e fica a aproximadamente 45 km da capital. Por isso aparece em muitas buscas junto com o nome da cidade, mas o endereço oficial é Pitimbu, PB.",
+            },
           ],
         },
         {
@@ -1673,11 +1679,37 @@ export const contentByLocale: Record<Locale, PageContent> = {
       ],
     },
     photos: {
-      title: "Fotos do local",
+      title: "Fotos da Praia Bela em Pitimbu, Paraíba",
       intro:
         "Imagens do encontro rio-mar, areia dourada, quiosques e vida das poças, como referência visual antes da visita. O fundo principal provém do mesmo acervo.",
       mapsCta: "Ver no Google Maps",
-      altPrefix: "Foto da Praia Bela no local",
+      altPrefix: "Praia Bela em Pitimbu, Paraíba",
+      photoAlts: [
+        "Praia Bela em Pitimbu, Paraíba",
+        "Encontro do rio com o mar na Praia Bela",
+        "Faixa de areia dourada da Praia Bela, PB",
+        "Rio Mucatu na Praia Bela",
+        "Quiosques à beira da praia na Praia Bela",
+        "Balsa para atravessar o rio na Praia Bela",
+        "Vista da Praia Bela em Pitimbu",
+        "Mar aberto e ondas na Praia Bela",
+        "Foz tranquila do rio na Praia Bela",
+        "Dunas costeiras da Praia Bela",
+        "Manguezais próximos à Praia Bela",
+        "Pôr do sol na Praia Bela, Paraíba",
+        "Crianças na foz da Praia Bela",
+        "Guarda-sol e rede na areia da Praia Bela",
+        "Barqueiros da balsa na Praia Bela",
+        "Pedras e recifes na Praia Bela",
+        "Passarela de madeira na Praia Bela",
+        "Coqueiros à beira da Praia Bela",
+        "Banco de areia na baixa-mar da Praia Bela",
+        "Caminhada à beira-mar na Praia Bela",
+        "Barco de pesca na Praia Bela",
+        "Vegetação costeira na Praia Bela",
+        "Detalhe das ondas do mar aberto na Praia Bela",
+        "Panorama geral da Praia Bela em Pitimbu, PB",
+      ],
     },
     reviews: {
       title: "Observações dos visitantes",
@@ -1702,9 +1734,9 @@ export const contentByLocale: Record<Locale, PageContent> = {
       ],
     },
     transport: {
-      title: "Como chegar",
+      title: "Como chegar à Praia Bela saindo de João Pessoa",
       intro:
-        "A Praia Bela fica no litoral sul de Pitimbu. Normalmente chega-se primeiro a João Pessoa ou Pitimbu, e depois se conclui com uma chegada de estrada mais balsa.",
+        "A Praia Bela fica no litoral sul de Pitimbu, a cerca de 45 km de João Pessoa (cerca de 1 hora de carro pela BR-101 e PB-008). Normalmente chega-se primeiro a João Pessoa ou Pitimbu, e depois se conclui com uma chegada de estrada mais balsa. Plus Code: J52W+R9.",
       cards: [
         {
           title: "Aeroportos regionais",

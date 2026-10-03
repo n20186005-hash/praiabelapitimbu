@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://praiabelapitimbu.com/sitemap-index.xml
